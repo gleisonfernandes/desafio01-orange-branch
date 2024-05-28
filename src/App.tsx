@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './pages/Login';
 import GlobalStyle from './styles/GlobalStyle';
+import SiteRouterProvider from './routes/routes';
 
 function App() {
   return (
     <>
-      <Login />
+      <SiteRouterProvider />
       <GlobalStyle/>
     </>
   );
