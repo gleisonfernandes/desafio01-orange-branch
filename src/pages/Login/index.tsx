@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LogoImage from '../../assets/logo_circulo.png';
+import { Link } from "react-router-dom";
 
 
 import { 
@@ -44,8 +45,8 @@ const Login = () => {
             />
             <LoginButton onClick={handleLogin}>Log in</LoginButton>
             <Redirect>
-            <a href="#" >Esqueceu a senha ?</a>
-            <a href="#" >Criar uma conta</a>
+            <Link to="#" >Esqueceu a senha ?</Link>
+            <Link to="/signup" >Criar uma conta</Link>
             </Redirect>
         </Content>
     </Container>
