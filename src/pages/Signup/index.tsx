@@ -104,12 +104,6 @@ const Signup = () => {
                             value={nickname}
                             onChange={(e) => setNickname(e.target.value)}
                         />
-                        <NicknameInput 
-                            placeholder="Usuário"
-                            type="text"
-                            value={nickname}
-                            onChange={(e) => setNickname(e.target.value)}
-                        />
 
                         <DateOfBirthPickerContainer>
                             <Textdate>
