@@ -7,9 +7,14 @@ export interface User {
     dateofbirth: string;
     profileImage: string;
     coverImage: string;
+    joined: string;
+    bio: string;
+    city: string;
+    site: string;
   }
 
 export interface Props{
+    id: number;
     avatar: string;
     name: string;
     nickname: string;
@@ -19,4 +24,5 @@ export interface Props{
     retweets: string;
     comments: string;
     image?: string;
+    user_id: number;
 }
