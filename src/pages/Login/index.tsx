@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LogoImage from '../../assets/logo_circulo.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { mockUsers } from '../../mockData';
 
 
 import { 
@@ -16,12 +17,16 @@ import {
 const Login = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        if (email != '' && password != '') {
-            alert('Email: '+ email + ', Senha'+ password);
+        console.log("Chegou aqui 1");
+        
+        const user = mockUsers.find(u => u.email === email && u.password === password);
+        if (user) {
+            navigate('/profile');
         } else {
-            alert('Todos os campos são obgrigatórios');
+            alert('Invalid email or password');
         }
     };
   return (
