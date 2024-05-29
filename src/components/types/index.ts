@@ -11,6 +11,8 @@ export interface User {
     bio: string;
     city: string;
     site: string;
+    Following: number;
+    Followers: number;
   }
 
 export interface Props{
