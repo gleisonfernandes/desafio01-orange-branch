@@ -8,6 +8,7 @@ import {
   ProfileInfo,
  } from './styles';
 import ProfilePage from '../ProfilePage';
+import BottomMenu from '../MenuBottom';
 
 
 const MainProfile = () => {
@@ -31,6 +32,8 @@ const MainProfile = () => {
             )}
         </Header>
         <ProfilePage />
+
+        <BottomMenu />
         
         
     </Container>
