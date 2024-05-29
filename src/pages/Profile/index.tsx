@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import LogoImage from '../../assets/logo_circulo.png';
-import { Link, useNavigate } from "react-router-dom";
-import { mockUsers } from '../../mockData';
-
+import React from 'react';
 
 import { 
-    Container,
-    
+  Container,
+  Wrapper,
 } from './styles';
 import MenuBar from '../../components/MenuBar';
+import MainProfile from '../../components/MainProfile';
 
 const Profile = () => {
   return (
     <Container>
+      <Wrapper>
         <MenuBar />
+        <MainProfile />
+      </Wrapper>
     </Container>
   );
 }
