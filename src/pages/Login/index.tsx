@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LogoImage from '../../assets/logo_circulo.png';
 import { Link, useNavigate } from "react-router-dom";
 import { mockUsers } from '../../mockData';
+import { useDataContext } from '../../Context';
 
 
 import { 
@@ -18,13 +19,14 @@ const Login = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const navigate = useNavigate();
+    const { setId } = useDataContext();
 
     const handleLogin = () => {
         console.log("Chegou aqui 1");
         
         const user = mockUsers.find(u => u.email === email && u.password === password);
         if (user) {
-            localStorage.setItem('savedId', JSON.stringify(user.id));
+            setId(user.id);
             navigate('/profile');
         } else {
             alert('Invalid email or password');

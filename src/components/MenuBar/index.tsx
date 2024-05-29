@@ -18,24 +18,14 @@ import {
  } from './styles';
 import Button from '../Button';
 import { mockUsers } from '../../mockData';
-import { log } from 'console';
+import { useDataContext } from '../../Context';
 
-interface User{
-  id: number;
-}
+
+
 
 const MenuBar = () => {
-  const [idUser, setIdUser] = useState<number>();
-  useEffect(() => {
-    const savedDataString = localStorage.getItem('savedId');
-    console.log('1. savedDataString: ', savedDataString);
-    
-    if (savedDataString) {
-      const savedId = JSON.parse(savedDataString);
-      console.log('2. savedId: ', savedId);
-      setIdUser(savedId);
-    }
-  }, []);
+  const { id } = useDataContext();
+ 
   return(
     <Container>
       <PageTop>
@@ -77,7 +67,7 @@ const MenuBar = () => {
       </PageTop>
       <PageFinal>
         {mockUsers.map((item) =>
-            item.id === idUser &&
+            item.id === id &&
             <>
               <Avatar>
                 <img src={item.profileImage} alt={`imagem do perfil de ${item.name}`} />
