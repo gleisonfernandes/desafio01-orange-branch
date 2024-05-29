@@ -7,6 +7,7 @@ import {
   BackIcon, 
   ProfileInfo,
  } from './styles';
+import ProfilePage from '../ProfilePage';
 
 
 const MainProfile = () => {
@@ -29,6 +30,7 @@ const MainProfile = () => {
                 </>
             )}
         </Header>
+        <ProfilePage />
         
         
     </Container>
