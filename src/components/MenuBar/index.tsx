@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import { 
   Container,
@@ -17,8 +17,25 @@ import {
   IconMore,
  } from './styles';
 import Button from '../Button';
+import { mockUsers } from '../../mockData';
+import { log } from 'console';
+
+interface User{
+  id: number;
+}
 
 const MenuBar = () => {
+  const [idUser, setIdUser] = useState<number>();
+  useEffect(() => {
+    const savedDataString = localStorage.getItem('savedId');
+    console.log('1. savedDataString: ', savedDataString);
+    
+    if (savedDataString) {
+      const savedId = JSON.parse(savedDataString);
+      console.log('2. savedId: ', savedId);
+      setIdUser(savedId);
+    }
+  }, []);
   return(
     <Container>
       <PageTop>
@@ -59,11 +76,18 @@ const MenuBar = () => {
         </Button>
       </PageTop>
       <PageFinal>
-        <Avatar />
-        <ProfileData>
-          <strong>User Teste</strong>
-          <span>@usuarioTeste</span>
-        </ProfileData>
+        {mockUsers.map((item) =>
+            item.id === idUser &&
+            <>
+              <Avatar>
+                <img src={item.profileImage} alt={`imagem do perfil de ${item.name}`} />
+              </Avatar>
+              <ProfileData>
+                    <strong>{item.name}</strong>
+                    <span>{item.nickname}</span>
+              </ProfileData>
+            </>
+        )}
         <IconMore />
       </PageFinal>
     </Container>

@@ -24,6 +24,7 @@ const Login = () => {
         
         const user = mockUsers.find(u => u.email === email && u.password === password);
         if (user) {
+            localStorage.setItem('savedId', JSON.stringify(user.id));
             navigate('/profile');
         } else {
             alert('Invalid email or password');

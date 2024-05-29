@@ -1,6 +1,5 @@
 import styled, {css} from 'styled-components';
 import LogoCirculo from '../../assets/logo_circulo.png';
-import ProfileImage from '../../assets/profile.png';
 import { ReactComponent as Home } from '../../assets/home outline.svg';
 import { ReactComponent as Explore } from '../../assets/explore.svg';
 import { ReactComponent as Notification } from '../../assets/notification.svg';
@@ -134,13 +133,11 @@ export const PageFinal = styled.div`
     align-items: center;
 `;
 export const Avatar = styled.div`
-  width: 50px;
-  height: 50px;
-
-  background-image: url(${ProfileImage});
-  background-size: cover;
-  background-position: center;
-
+  >img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
 `;
 export const ProfileData = styled.div`
   display: none;
