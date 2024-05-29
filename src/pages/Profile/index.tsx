@@ -8,11 +8,12 @@ import {
     Container,
     
 } from './styles';
+import MenuBar from '../../components/MenuBar';
 
 const Profile = () => {
   return (
     <Container>
-        <h1>Profile</h1>
+        <MenuBar />
     </Container>
   );
 }
