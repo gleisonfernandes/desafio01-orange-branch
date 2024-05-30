@@ -14,6 +14,7 @@ import {
     Followage,
     EditButton,
 } from './styles';
+import UserTweet from '../UserTweet/Index';
 
 const ProfilePage = () => {
   const { id } = useDataContext();
@@ -64,6 +65,7 @@ const ProfilePage = () => {
                 </ProfileData>
             </>
         )}
+        <UserTweet />
     </Container>
   );
 }
