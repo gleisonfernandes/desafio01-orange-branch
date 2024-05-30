@@ -6,6 +6,7 @@ import {
 } from './styles';
 import MenuBar from '../../components/MenuBar';
 import MainProfile from '../../components/MainProfile';
+import SideBar from '../../components/SideBar/Index';
 
 const Profile = () => {
   return (
@@ -13,6 +14,7 @@ const Profile = () => {
       <Wrapper>
         <MenuBar />
         <MainProfile />
+        <SideBar/>
       </Wrapper>
     </Container>
   );
