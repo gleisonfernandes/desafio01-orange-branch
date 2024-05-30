@@ -5,14 +5,14 @@ export interface User {
     name: string;
     nickname: string;
     dateofbirth: string;
-    profileImage: string;
-    coverImage: string;
-    joined: string;
-    bio: string;
-    city: string;
-    site: string;
-    Following: number;
-    Followers: number;
+    profileImage?: string;
+    coverImage?: string;
+    joined?: string;
+    bio?: string;
+    city?: string;
+    site?: string;
+    Following?: number;
+    Followers?: number;
   }
 
 export interface Props{
@@ -26,5 +26,5 @@ export interface Props{
     retweets: string;
     comments: string;
     image?: string;
-    user_id: number;
+    user_id?: number;
 }
