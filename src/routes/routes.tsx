@@ -3,6 +3,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Profile from "../pages/Profile";
 import { DataProvider } from '../Context';
+import Feed from '../pages/Feed';
 
 
 const SiteRouterProvider = () => {
@@ -15,6 +16,7 @@ const SiteRouterProvider = () => {
             <Route path="/" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/feed" element={<Feed />} />
         </Routes>
       </Router>
     </DataProvider>
