@@ -19,19 +19,29 @@ import {
 import Button from '../Button';
 import { mockUsers } from '../../mockData';
 import { useDataContext } from '../../Context';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 const MenuBar = () => {
   const { id } = useDataContext();
- 
+  const navigate = useNavigate();
+
+  const handleHome= () => {
+    navigate('/feed');
+  }
+
+  const handleProfile = () => {
+    navigate('/profile');
+  }
+
   return(
     <Container>
       <PageTop>
         <Logo />
 
-        <MenuButton>
+        <MenuButton onClick={handleHome}>
           <HomeIcon />
           <span>Home</span>
         </MenuButton>
@@ -51,7 +61,7 @@ const MenuBar = () => {
           <span>Menssagens</span>
         </MenuButton>
 
-        <MenuButton>
+        <MenuButton onClick={handleProfile}>
           <ProfileIcon />
           <span>Profile</span>
         </MenuButton>

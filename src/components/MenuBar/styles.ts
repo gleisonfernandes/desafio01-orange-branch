@@ -58,9 +58,12 @@ export const MenuButton = styled.button`
 
  &:hover,
  &.active{
-    font-weight: bold;
     color: var(--black);
     stroke: var(--black);
+    >span{
+      font-size: 18px;
+      font-weight: bold;
+    }
  }
 
   >span{
