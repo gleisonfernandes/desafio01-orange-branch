@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import Modal from '../Modal';
+import { useNavigate } from "react-router-dom";
 
 import { 
   Container, 
   Body,
   Avatar,
   Content,
+  InfoTweet,
   Header,
   InfoHeader,
   Dot,
@@ -22,7 +24,7 @@ import {
   StatisticsIcon,
   ModalContainer,
   VerticalLine,
-  Teste,
+  RenderDescription,
 } from './styles';
 
 import {Props} from '../types'
@@ -30,11 +32,16 @@ import NewTweet from '../NewTweet';
 
 const Tweet = ({id, avatar, name, nickname, date, description, likes, retweets, comments, image}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
-
+  const tweetPost = () => {
+    console.log(id);
+    navigate(`/post/${id}`);
+    
+  };
   return (
     <Container>
       <Body>
@@ -43,26 +50,28 @@ const Tweet = ({id, avatar, name, nickname, date, description, likes, retweets, 
         </Avatar>
 
         <Content>
-          <Header>
-            <InfoHeader>
-              <strong>{name}</strong>
-              <span>{nickname}</span>
-              <Dot />
-              <time>{date}</time>
-            </InfoHeader>
-            <IconHeader>
-              <MoreIcon />
-            </IconHeader>
-          </Header>
+          <InfoTweet onClick={tweetPost}>
+            <Header>
+              <InfoHeader>
+                <strong>{name}</strong>
+                <span>{nickname}</span>
+                <Dot />
+                <time>{date}</time>
+              </InfoHeader>
+              <IconHeader>
+                <MoreIcon />
+              </IconHeader>
+            </Header>
 
-          <Description>
-            {description}
-          </Description>
-          {image &&
-            <ImageContent >
-              <img src={image} />
-            </ImageContent>
-          }
+            <Description>
+              {description}
+            </Description>
+            {image &&
+              <ImageContent >
+                <img src={image} />
+              </ImageContent>
+            }
+          </InfoTweet>
           <Icons>
             <Status onClick={toggleModal}>
               <CommentIcon />
@@ -101,12 +110,12 @@ const Tweet = ({id, avatar, name, nickname, date, description, likes, retweets, 
                   <time>{date}</time>
                 </InfoHeader>
               </Header>
-              <Teste>
+              <RenderDescription>
                 <VerticalLine />
                 <Description>
                   {description}
                 </Description>
-              </Teste>
+              </RenderDescription>
             </Content>
           </Body>
           <VerticalLine />

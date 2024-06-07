@@ -43,6 +43,9 @@ export const Content  = styled.div`
   margin-left: 15px;
   padding-left: 59px;
 `;
+export const InfoTweet  = styled.div`
+  cursor: pointer;
+`;
 export const Header  = styled.div`
   display: flex;
   justify-content: space-between;
@@ -152,10 +155,9 @@ export const StatisticsIcon  = styled(Statistics)`
 `;
 
 export const ModalContainer = styled.div`
-  /*text-align: center;*/
-  margin-top: 50px;
+  margin-top: 0px;
 `;
-export const Teste = styled.div`
+export const RenderDescription = styled.div`
   display: flex;
   flex-direction: row;
 `;
