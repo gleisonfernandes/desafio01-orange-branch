@@ -4,6 +4,7 @@ import Signup from "../pages/Signup";
 import Profile from "../pages/Profile";
 import { DataProvider } from '../Context';
 import Feed from '../pages/Feed';
+import Post from '../pages/Post';
 
 
 const SiteRouterProvider = () => {
@@ -17,6 +18,7 @@ const SiteRouterProvider = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/feed" element={<Feed />} />
+            <Route path="/post/:id" element={<Post />} />
         </Routes>
       </Router>
     </DataProvider>
