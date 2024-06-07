@@ -8,6 +8,7 @@ import Button from '../Button';
 
 export const Container = styled.div`
   max-width: 869px;
+  width: 100%;
   background-color: #fff;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--outline);
@@ -19,16 +20,16 @@ export const NewTweets = styled.div`
 export const Avatar  = styled.div`
  position: absolute;
  margin: 5px 0 0 19px;
-    >img{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    flex-shrink: 0;
+ >img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  flex-shrink: 0;
 
-    position: absolute;
-    top: 0;
-    left: 0%;
-    }
+  position: absolute;
+  top: 0;
+  left: 0%;
+ }
 
 `;
 export const TextArea = styled.textarea`
@@ -43,6 +44,9 @@ export const TextArea = styled.textarea`
     border: none;
     outline: none;
   }
+  @media(max-width: 520px){
+    font-size: 18px;
+  }
 `;
 export const FileButon = styled.div`
   display: flex;
@@ -53,6 +57,10 @@ export const FileInputWrapper = styled.label`
   align-items: center;
   cursor: pointer;
   margin-left: 95px;
+
+  @media(max-width: 520px){
+    margin-left: 75px;
+  }
 `;
 
 export const FileInput = styled.input`
@@ -60,8 +68,8 @@ export const FileInput = styled.input`
 `;
 
 export const PreviewImage = styled.img`
-  max-width: 579px;
-  width: 100%;
+  width: 70%;
+  max-width: calc(100% - 40px);
   margin-top: 10px;
   margin-left: 95px;
   border-radius: 5px;

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { mockUsers } from '../../mockData';
 import { useDataContext } from '../../Context';
+import Modal from '../Modal';
 
 import { 
     Container,
@@ -13,11 +14,73 @@ import {
     CalenderIcon,
     Followage,
     EditButton,
+    ModalContainer,
+    Form,
+    Input,
+    TextArea,
+    InputFile,
+    FTCapa,
+    FTProfile,
+    ImagePreviewCapa,
+    ImagePreviewProfile,
+    SubmitButton,
 } from './styles';
 import UserTweet from '../UserTweet/Index';
 
 const ProfilePage = () => {
-  const { id } = useDataContext();
+    const { id } = useDataContext();
+
+    const [isOpen, setIsOpen] = useState(false);
+    const [coverPhoto, setCoverPhoto] = useState<string | ArrayBuffer | null>(null);
+    const [profilePhoto, setProfilePhoto] = useState<string | ArrayBuffer | null>(null);
+    const coverPhotoInputRef = useRef<HTMLInputElement>(null);
+    const profilePhotoInputRef = useRef<HTMLInputElement>(null);
+
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const teste = () => {
+        console.log('Teste: ', coverPhoto?.toString());
+    };
+
+    const handleCoverPhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            setCoverPhoto(reader.result);
+        };
+        reader.readAsDataURL(file);
+        }
+    };
+
+    const handleProfilePhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        console.log('Profile: ', file);
+        
+        if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            setProfilePhoto(reader.result);
+        };
+        reader.readAsDataURL(file);
+        }
+    };
+
+    const openCoverPhotoInput = () => {
+        if (coverPhotoInputRef.current) {
+          coverPhotoInputRef.current.click();
+        }
+      };
+    
+    const openProfilePhotoInput = () => {
+        if (profilePhotoInputRef.current) {
+          profilePhotoInputRef.current.click();
+        }
+    };
+
+
   return (
     <Container>
         {mockUsers.map((item) =>
@@ -31,7 +94,7 @@ const ProfilePage = () => {
                 </Banner>
 
                 <ProfileData>
-                    <EditButton outlined>Editar</EditButton>
+                    <EditButton outlined onClick={toggleModal}>Editar</EditButton>
 
                     <h1>{item.name}</h1>
                     <h2>{item.nickname}</h2>
@@ -66,6 +129,27 @@ const ProfilePage = () => {
             </>
         )}
         <UserTweet />
+        <ModalContainer>
+            <Modal isOpen={isOpen} onClose={toggleModal}>
+            <h2>Editar Perfil</h2>
+            <Form>
+                <FTCapa onClick={openCoverPhotoInput}>
+                <InputFile type="file" accept="image/*" id="coverPhoto" name="coverPhoto" ref={coverPhotoInputRef} onChange={handleCoverPhotoChange} />
+                {coverPhoto && <ImagePreviewCapa src={coverPhoto.toString()} alt="Preview da Foto da Capa" />}
+                </FTCapa>
+                <FTProfile onClick={openProfilePhotoInput}>
+                <InputFile type="file" accept="image/*" id="profilePhoto" name="profilePhoto" ref={profilePhotoInputRef} onChange={handleProfilePhotoChange} />
+                {profilePhoto && <ImagePreviewProfile src={profilePhoto.toString()} alt="Preview da Foto do Perfil" />}
+                </FTProfile>
+                <Input type="text" id="name" name="name" placeholder='Nome:' />
+                <TextArea id="bio" name="bio" placeholder='Bio:'></TextArea>
+                <Input type="text" id="city" name="city" placeholder='Cidade:'/>
+                <Input type="text" id="site" name="site" placeholder='Site:'/>
+                <p onClick={teste}>Clique</p>
+                <SubmitButton>Salvar</SubmitButton>
+            </Form>
+            </Modal>
+        </ModalContainer>
     </Container>
   );
 }

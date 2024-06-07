@@ -23,7 +23,7 @@ const MainFeed = () => {
                 <CustomizeIcon />
             </button>
         </Header>
-        <NewTweet/>
+        <NewTweet description='O que está acontecendo' titleBtn='Tweet'/>
         {mockTweets.map((item) => 
                 <>
                  <Tweet key={item.id} id={item.id} avatar={item.avatar} name={item.name} nickname={item.nickname} date={item.date} description={item.description} comments={item.comments} retweets={item.retweets} likes={item.likes} image={item?.image} />

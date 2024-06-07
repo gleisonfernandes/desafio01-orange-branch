@@ -6,7 +6,6 @@ import { ReactComponent as Like } from '../../assets/like.svg';
 import { ReactComponent as Shere } from '../../assets/share.svg';
 import { ReactComponent as Statistics } from '../../assets/statistics.svg';
 
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -65,6 +64,10 @@ export const InfoHeader  = styled.div`
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+  @media(max-width: 520px){
+   display: flex;
+   flex-direction: column;
   }
 `;
 export const Dot  = styled.div`
@@ -127,6 +130,7 @@ export const Status  = styled.div`
 const icons = css`
  width: 24px;
  height: 24px;
+ cursor: pointer;
  
 
  color: var(--black);
@@ -145,4 +149,26 @@ export const ShereIcon  = styled(Shere)`
 `;
 export const StatisticsIcon  = styled(Statistics)`
  ${icons}
+`;
+
+export const ModalContainer = styled.div`
+  /*text-align: center;*/
+  margin-top: 50px;
+`;
+export const Teste = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const VerticalLine = styled.div`
+    margin-left: -30px;
+    margin-right: 30px;
+    margin-top: -20px;
+    border-left: 3px solid var(--outline);
+    height: 130%;
+    margin-bottom: 30px;
+    @media(min-width: 520px){
+      margin-top: 40px;
+      height: 100%;
+      margin-bottom: 0px;
+    }
 `;

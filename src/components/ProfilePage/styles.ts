@@ -151,3 +151,68 @@ export const Followage = styled.div`
         }
     }
 `;
+
+export const ModalContainer = styled.div`
+  text-align: center;
+  margin-top: 50px;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Input = styled.input`
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const TextArea = styled.textarea`
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const InputFile = styled.input`
+  display: none;
+`;
+
+export const FTCapa = styled.div`
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background-color: #ccc;
+    cursor: pointer;
+`;
+
+export const FTProfile = styled.div`
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: -40px;
+    border-radius: 50px;
+    background-color: #ccc;
+    border: 2px solid #fff;
+    cursor: pointer;
+`;
+
+export const ImagePreviewCapa = styled.img`
+  width: 100%;
+  height: auto;
+`;
+export const ImagePreviewProfile = styled.img`
+    width: 100%;
+    border-radius: 50px;
+`;
+
+export const SubmitButton = styled(Button)`
+  margin-top: 10px;
+  padding: 8px 16px;
+`;

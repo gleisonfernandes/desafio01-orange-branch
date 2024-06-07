@@ -18,7 +18,13 @@ import {
     TweetButton, 
 } from './styles';
 
-const NewTweet = () => {
+interface FormProps {
+  description?: string;
+  image?: string;
+  titleBtn: string;
+}
+
+const NewTweet = ({description, image, titleBtn}: FormProps) => {
     const { id } = useDataContext();
     const [newTweetText, setNewTweetText] = useState<string>('');
     const [newTweetImage, setNewTweetImage] = useState<string>('');
@@ -54,9 +60,10 @@ const NewTweet = () => {
              </>
             )}
             <TextArea
-              placeholder="O que está acontecendo"
+              placeholder={description}
               value={newTweetText}
               onChange={handleTextChange}
+
             />
             {imagePreview && <PreviewImage src={imagePreview} alt="Preview" />}
             <FileButon>
@@ -72,7 +79,7 @@ const NewTweet = () => {
                     <SmileIcon/>
                     <ScheduleIcon/>
                 </FileInputWrapper>
-                <TweetButton backgroundColor='orange-light' onClick={() =>{}}>Tweet</TweetButton>
+                <TweetButton backgroundColor='orange-light' onClick={() =>{}}>{titleBtn}</TweetButton>
             </FileButon>
           </NewTweets>
         </Container>
