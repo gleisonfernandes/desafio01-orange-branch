@@ -1,4 +1,4 @@
-import {Props, User} from './components/types';
+import {Props, User, TweetComment} from './components/types';
 import Imagem from './assets/image.png';
 import Profile from './assets/profile.png';
 import Designsta from './assets/Designsta.png';
@@ -24,4 +24,12 @@ export const mockUsers: User[] = [
     { id: 4, description: "Spring Boot is awesome!", name: "Usuario Teste", nickname: "@userTeste", avatar: Profile, likes: '15', retweets: '3', comments: '7', date: 'Apr 1', user_id: 1 },
     { id: 5, description: "Hello Twitter!", name: "Usuario Teste", nickname: "@userTeste", avatar: Profile, likes: '10', retweets: '2', comments: '5', date: 'Apr 1', user_id: 1 },
     { id: 6, description: "Spring Boot is awesome!", name: "Usuario Teste", nickname: "@userTeste", avatar: Profile, likes: '15', retweets: '3', comments: '7', date: 'Apr 1', user_id: 1 },
+  ];
+
+  export const mockTweetComment: TweetComment[] = [
+    { id: 1, description: "Lorem ipsum dolor sit amet.", date: 'Apr 1', user_id: 3, tweet_id: 1},
+    { id: 2, description: "Lorem ipsum dolor sit amet.", date: 'Apr 1', user_id: 2, tweet_id: 1},
+    { id: 3, description: "Lorem ipsum dolor sit amet.", date: 'Apr 1', user_id: 1, tweet_id: 2},
+    { id: 4, description: "Lorem ipsum dolor sit amet.", date: 'Apr 1', user_id: 4, tweet_id: 1},
+    { id: 5, description: "Lorem ipsum dolor sit amet.", date: 'Apr 1', user_id: 3, tweet_id: 2},
   ];

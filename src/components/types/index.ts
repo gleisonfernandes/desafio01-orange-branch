@@ -28,3 +28,12 @@ export interface Props{
     image?: string;
     user_id?: number;
 }
+
+export interface TweetComment{
+  id?: number;
+  description?: string;
+  image?: string;
+  date?: string;
+  user_id?: number;
+  tweet_id?: number;
+}
