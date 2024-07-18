@@ -1,8 +1,10 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
+import React, { ReactNode, createContext, useContext, useEffect, useState } from 'react';
+import { GetUser } from '../service/user';
+import { useAuth } from '../providers/AuthProvider/useAuth';
+import { User } from '../service/user/types';
 
 interface DataContextType {
-  id: number | undefined;
-  setId: (id: number) => void;
+  user: User | undefined;
 }
 
 interface DataContextProvider {
@@ -20,10 +22,25 @@ export const useDataContext = () => {
 };
 
 export const DataProvider= ({children}: DataContextProvider) => {
-  const [id, setId] = useState<number | undefined>(undefined);
+  const auth = useAuth();
+  const [user, setUser] = useState<User>();
 
+  useEffect(() => {
+    const getUserByEmail = async () => {
+      try {
+        const response = await GetUser(auth?.token ?? "", auth?.email ?? "");
+        if(response) {
+          setUser(response?.data);
+        }
+      } catch (error) {
+        
+      }
+    }
+
+    getUserByEmail();
+  }, [auth?.token, auth?.email])
   return (
-    <DataContext.Provider value={{ id, setId }}>
+    <DataContext.Provider value={{user}}>
       {children}
     </DataContext.Provider>
   );

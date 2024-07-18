@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import FotoProfile from "../../assets/FotoPerfil.png";
 
 
 import { Container, Avatar, Info, FollowButton } from './styles';
@@ -11,7 +12,9 @@ const RecentUsers = ({avatar, name, nickname}: Users) => {
     <Container>
         <div>
             <Avatar>
-            <img src={avatar} alt={`Imagem de profile de ${name}`} />;
+            {avatar ?
+              <img src={avatar} alt={`imagem do perfil de ${name}`} /> : <img src={FotoProfile} alt={`imagem do perfil de ${name}`} />
+            }
             </Avatar>
         
             <Info>

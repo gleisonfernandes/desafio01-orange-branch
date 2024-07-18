@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { mockUsers } from '../../mockData';
 import { useDataContext } from '../../Context';
+import { useAuth } from "../../providers/AuthProvider/useAuth";
+import { GetAllUser } from '../../service/user';
+import { RecentsUsers} from '../../service/user/types';
 
 import { 
     Container,
@@ -16,8 +19,25 @@ import {
 import RecentUsers from '../RecentUsers';
 
 const SideBar = () => {
-  const { id } = useDataContext();
-  const filteredUser = mockUsers.filter(user => user.id != id).slice(-2);
+  const { user } = useDataContext();
+  const [recentsUsers, setRecentsUsers] = useState<RecentsUsers[]>([]);
+  const auth = useAuth();
+
+  useEffect(()=>{
+    const getUsers = async () => {
+        try{
+            if(!auth?.token) return;
+            const response = await GetAllUser({token: auth?.token});
+            if(response && response.data){
+              setRecentsUsers(response.data);
+            }
+        }catch(e){
+          console.error('Erro ao buscar usuários recentes:', e);
+        }
+    }
+    getUsers();
+}, [auth?.token])
+const filteredUser = recentsUsers.filter(users => users.id != user?.id).slice(-2);
   return (
     <Container>
         <SearchWrapper>

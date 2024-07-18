@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { 
     Container, 
@@ -10,15 +10,35 @@ import {
 import { mockTweets } from '../../mockData';
 import { useDataContext } from '../../Context';
 import Tweet from '../Tweet';
+import { useAuth } from '../../providers/AuthProvider/useAuth';
+import { GetUserTweets } from '../../service/tweets';
+import { TweetProps } from '../../service/tweets/types';
+import FormatDate from '../FormatDate';
 
 const UserTweet = () => {
- const { id } = useDataContext();
+ const auth = useAuth();
+ const { user } = useDataContext();
  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+ const [tweets, setTweets] = useState<TweetProps[]>([]);
 
  const handleClick = (index: number) => {
     setSelectedIndex(index);
  };
+ useEffect(()=>{
+    const getTweets = async () => {
+        try{
+            if(!auth?.token) return;
+            const response = await GetUserTweets({token: auth?.token, id: user?.id});
+            if(response){
+                setTweets(response.data)
+            }
+        }catch(e){
 
+        }
+    }
+
+    getTweets();
+}, [auth?.token])
   return (
     <Container>
         <Header>
@@ -40,11 +60,8 @@ const UserTweet = () => {
                 <PinIcon />
                 Pinned Tweet
             </PinnedTweet>
-            {mockTweets.map((item) => 
-                item.user_id === id &&
-                <>
-                 <Tweet key={item.id} id={item.id} avatar={item.avatar} name={item.name} nickname={item.nickname} date={item.date} description={item.description} comments={item.comments} retweets={item.retweets} likes={item.likes} image={item?.image} />
-                </>
+            {tweets.sort((a, b) => b.id - a.id).map((item) => 
+                 <Tweet key={item.id} id={item.id} avatar={item.user?.profileImage ?? ""} name={item.user?.name ?? ""} nickname={item.user?.nickname ?? ""} date={FormatDate(item.createdAt)} description={item.description} comments={item.comments} retweets={item.retweets} likes={item.likes} image={item?.tweetImage} user_id={item.user?.id} />
             )}
         </Tweets>
     </Container>

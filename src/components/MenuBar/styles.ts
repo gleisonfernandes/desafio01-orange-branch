@@ -58,8 +58,8 @@ export const MenuButton = styled.button`
 
  &:hover,
  &.active{
-    color: var(--black);
-    stroke: var(--black);
+    color: var(--orange);
+    stroke: var(--orange);
     >span{
       font-size: 18px;
       font-weight: bold;

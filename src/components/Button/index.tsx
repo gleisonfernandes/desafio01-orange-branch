@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 interface Props {
     outlined?: boolean;
-    backgroundColor?: 'orange' | 'black' | 'orange-light';
+    backgroundColor?: 'orange' | 'black' | 'like' | 'orange-light';
 }
 
 const getBackgroundColor = (props: Props) => {
@@ -13,6 +13,8 @@ const getBackgroundColor = (props: Props) => {
     switch (props.backgroundColor) {
         case 'orange':
             return 'var(--orange)';
+        case 'like':
+            return 'var(--like)';
         case 'black':
             return 'var(--black)';
         case 'orange-light':

@@ -61,3 +61,6 @@ export const FeedInfo = styled.div`
     font-weight: bold;
   }
 `;
+export const BottomMargin = styled.div`
+  margin-bottom: 40px;
+`;

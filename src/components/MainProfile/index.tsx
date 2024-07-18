@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { mockTweets, mockUsers } from '../../mockData';
 import { useDataContext } from '../../Context';
+import { useAuth } from "../../providers/AuthProvider/useAuth";
 import { 
   Container,
   Header, 
@@ -9,27 +10,41 @@ import {
  } from './styles';
 import ProfilePage from '../ProfilePage';
 import BottomMenu from '../MenuBottom';
+import { TweetProps } from '../../service/tweets/types';
+import { GetUserTweets } from '../../service/tweets';
+
+
 
 
 const MainProfile = () => {
-  const { id } = useDataContext();
-  const filteredTweets = mockTweets.filter(tweet => tweet.user_id === id);
-  const tweetCount = filteredTweets.length;
+  const { user } = useDataContext();
+  const auth = useAuth();
+  const [tweetCount, setTweetCount] = useState(0);
+  useEffect(()=>{
+    const getTweets = async () => {
+        try{
+            if(!auth?.token) return;
+            const response = await GetUserTweets({token: auth?.token, id: user?.id});
+            if(response){
+                setTweetCount(response.data.length)
+            }
+        }catch(e){
+
+        }
+    }
+    getTweets();
+}, [auth?.token])
+  
   return (
     <Container>
         <Header>
             <button>
                 <BackIcon />
             </button>
-            {mockUsers.map((item) =>
-            item.id === id &&
-                <>
-                    <ProfileInfo>
-                        <strong>{item.name}</strong>
-                        <span>{tweetCount} Tweets</span>
-                    </ProfileInfo>
-                </>
-            )}
+            <ProfileInfo>
+                <strong>{user?.name}</strong>
+                <span>{tweetCount} Tweets</span>
+            </ProfileInfo>
         </Header>
         <ProfilePage />
 

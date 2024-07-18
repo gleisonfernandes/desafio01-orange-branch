@@ -3,6 +3,7 @@ import { ReactComponent as More } from '../../assets/more.svg';
 import { ReactComponent as Comment } from '../../assets/comment.svg';
 import { ReactComponent as Retweet } from '../../assets/retweet.svg';
 import { ReactComponent as Like } from '../../assets/like.svg';
+import { ReactComponent as LikeFill } from '../../assets/like fill.svg';
 import { ReactComponent as Shere } from '../../assets/share.svg';
 import { ReactComponent as Statistics } from '../../assets/statistics.svg';
 
@@ -145,6 +146,9 @@ export const RetweetIcon  = styled(Retweet)`
  ${icons}
 `;
 export const LikeIcon  = styled(Like)`
+ ${icons}
+`;
+export const LikeFillIcon  = styled(LikeFill)`
  ${icons}
 `;
 export const ShereIcon  = styled(Shere)`

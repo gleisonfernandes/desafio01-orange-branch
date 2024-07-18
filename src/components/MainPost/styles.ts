@@ -62,3 +62,6 @@ export const PostInfo = styled.div`
     color: var(--gray);
   }
 `;
+export const BottomMargin = styled.div`
+  margin-bottom: 40px;
+`;

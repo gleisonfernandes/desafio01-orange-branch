@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import FotoProfile from "../../assets/FotoPerfil.png";
 
 import { 
   Container,
@@ -17,7 +18,6 @@ import {
   IconMore,
  } from './styles';
 import Button from '../Button';
-import { mockUsers } from '../../mockData';
 import { useDataContext } from '../../Context';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MenuBar = () => {
-  const { id } = useDataContext();
+  const { user } = useDataContext();
   const navigate = useNavigate();
 
   const handleHome= () => {
@@ -76,18 +76,18 @@ const MenuBar = () => {
         </Button>
       </PageTop>
       <PageFinal>
-        {mockUsers.map((item) =>
-            item.id === id &&
-            <>
+        
               <Avatar>
-                <img src={item.profileImage} alt={`imagem do perfil de ${item.name}`} />
+                {user?.profileImage ?
+                  <img src={user?.profileImage} alt={`imagem do perfil de ${user?.name}`} /> : <img src={FotoProfile} alt={`imagem do perfil de ${user?.name}`} />
+                }
               </Avatar>
+           
               <ProfileData>
-                    <strong>{item.name}</strong>
-                    <span>{item.nickname}</span>
+                    <strong>{user?.name}</strong>
+                    <span>{user?.nickname}</span>
               </ProfileData>
-            </>
-        )}
+         
         <IconMore />
       </PageFinal>
     </Container>
