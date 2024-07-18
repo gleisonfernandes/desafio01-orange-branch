@@ -36,3 +36,6 @@ Ver tudo que você postou
 - Armazenar imagens
 - Criar front customizado seguindo as diretrizes que estão no figma
 - Lidar com o front isolado do backend
+
+# API
+- [OrangexApi](https://github.com/gleisonfernandes/orangexApi)
